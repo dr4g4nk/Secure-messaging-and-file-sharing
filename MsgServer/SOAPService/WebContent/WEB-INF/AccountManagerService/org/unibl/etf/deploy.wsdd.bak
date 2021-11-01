@@ -1,0 +1,43 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from AccountManagerService WSDL service -->
+
+  <service name="AccountManager" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://etf.unibl.org"/>
+      <parameter name="wsdlServiceElement" value="AccountManagerService"/>
+      <parameter name="schemaQualified" value="http://etf.unibl.org"/>
+      <parameter name="wsdlServicePort" value="AccountManager"/>
+      <parameter name="className" value="org.unibl.etf.AccountManagerSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="AccountManager"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="createUser" qname="operNS:createUser" xmlns:operNS="http://etf.unibl.org" returnQName="retNS:createUserReturn" xmlns:retNS="http://etf.unibl.org" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:username" xmlns:pns="http://etf.unibl.org" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:password" xmlns:pns="http://etf.unibl.org" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:admin" xmlns:pns="http://etf.unibl.org" type="tns:boolean" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="unblockUser" qname="operNS:unblockUser" xmlns:operNS="http://etf.unibl.org" returnQName="retNS:unblockUserReturn" xmlns:retNS="http://etf.unibl.org" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:username" xmlns:pns="http://etf.unibl.org" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="blockUser" qname="operNS:blockUser" xmlns:operNS="http://etf.unibl.org" returnQName="retNS:blockUserReturn" xmlns:retNS="http://etf.unibl.org" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:username" xmlns:pns="http://etf.unibl.org" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="deleteUser" qname="operNS:deleteUser" xmlns:operNS="http://etf.unibl.org" returnQName="retNS:deleteUserReturn" xmlns:retNS="http://etf.unibl.org" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:username" xmlns:pns="http://etf.unibl.org" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getAddress" qname="operNS:getAddress" xmlns:operNS="http://etf.unibl.org" returnQName="retNS:getAddressReturn" xmlns:retNS="http://etf.unibl.org" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:username" xmlns:pns="http://etf.unibl.org" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="deleteUser blockUser createUser unblockUser getAddress"/>
+
+  </service>
+</deployment>

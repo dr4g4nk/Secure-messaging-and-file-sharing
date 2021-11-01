@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="626.0" prefWidth="629.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.AdminController">
+   <top>
+      <VBox prefHeight="82.0" prefWidth="802.0" BorderPane.alignment="CENTER">
+         <children>
+            <StackPane prefHeight="38.0" prefWidth="802.0">
+               <children>
+                  <Label text="Obavjestenja:">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </StackPane>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <TextArea fx:id="InformationsText" onKeyPressed="#sendOnEnterAction" prefHeight="46.0" prefWidth="501.0" wrapText="true">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </TextArea>
+                  <StackPane prefHeight="46.0" prefWidth="71.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#sendAction" style="-fx-background-color: #98baf2; -fx-background-radius: 20;">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="26.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../images/SendButton.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </StackPane>
+               </children>
+               <VBox.margin>
+                  <Insets left="15.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+   </top>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="21.0" layoutY="30.0" text="Novi korisnik:">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="usernameText" layoutX="135.0" layoutY="64.0" />
+            <Label layoutX="22.0" layoutY="67.0" text="Korisničko ime:">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="22.0" layoutY="100.0" text="Lozinka:">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <PasswordField fx:id="passwordText" layoutX="135.0" layoutY="97.0" />
+            <CheckBox fx:id="adminCh" layoutX="20.0" layoutY="141.0" mnemonicParsing="false" text="Administrator" />
+            <Button layoutX="185.0" layoutY="137.0" mnemonicParsing="false" onAction="#addUserAction" style="-fx-background-color: #98baf2; -fx-background-radius: 10;" text="Dodaj" />
+            <ComboBox fx:id="allUsers" layoutX="14.0" layoutY="242.0" prefHeight="26.0" prefWidth="175.0" promptText="Korisnici" style="-fx-background-color: #8da5b2;" />
+            <Label layoutX="17.0" layoutY="205.0" text="Blokiraj naloga:">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Button layoutX="74.0" layoutY="286.0" mnemonicParsing="false" onAction="#blockUserAction" style="-fx-background-color: #98baf2; -fx-background-radius: 10;" text="Blokiraj" />
+            <ComboBox fx:id="blockedUsers" layoutX="14.0" layoutY="403.0" prefHeight="26.0" prefWidth="175.0" promptText="Korisnici" style="-fx-background-color: #8da5b2;" />
+            <Label layoutX="17.0" layoutY="366.0" text="Aktiviraj nalog:">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Button layoutX="74.0" layoutY="447.0" mnemonicParsing="false" onAction="#activateUserAction" style="-fx-background-color: #98baf2; -fx-background-radius: 10;" text="Aktiviraj" />
+         </children>
+         <BorderPane.margin>
+            <Insets left="10.0" />
+         </BorderPane.margin>
+      </AnchorPane>
+   </center>
+   <left>
+      <VBox prefHeight="544.0" prefWidth="226.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Aktivni korisnici">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <StackPane prefHeight="399.0" prefWidth="226.0">
+               <children>
+                  <ListView fx:id="activeUsers" prefHeight="368.0" prefWidth="226.0" />
+               </children>
+            </StackPane>
+            <Region prefHeight="22.0" prefWidth="226.0" />
+            <HBox prefHeight="41.0" prefWidth="226.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#showStatisticAction" prefHeight="36.0" prefWidth="98.0" style="-fx-background-color: #98baf2; -fx-background-radius: 10;" text="Prikaz statistike" />
+                  <Region prefHeight="23.0" prefWidth="26.0" />
+                  <Button mnemonicParsing="false" onAction="#showMonitorAction" prefHeight="36.0" prefWidth="99.0" style="-fx-background-color: #98baf2; -fx-background-radius: 10;" text="Prikaz monitora" />
+               </children>
+            </HBox>
+         </children>
+         <BorderPane.margin>
+            <Insets left="10.0" top="10.0" />
+         </BorderPane.margin>
+      </VBox>
+   </left>
+</BorderPane>

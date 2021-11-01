@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.StackPane?>
+
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.StatisticController">
+   <children>
+      <TableView fx:id="statisticTable" prefHeight="452.0" prefWidth="462.0">
+        <columns>
+          <TableColumn fx:id="rbColumn" prefWidth="69.5999755859375" text="Redni broj" />
+          <TableColumn fx:id="loginTimeColumn" prefWidth="154.40008544921875" text="Vrijeme prijave" />
+            <TableColumn fx:id="logoutTimeColumn" prefWidth="116.800048828125" text="Vrijeme odjave" />
+            <TableColumn fx:id="durationColumn" prefWidth="152.0" text="Sesija(u min)" />
+        </columns>
+      </TableView>
+   </children>
+</StackPane>
